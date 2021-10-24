@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class Main {
 
     // 3. Определяем размеры массива
-    static final int SIZE_X = 10;
-    static final int SIZE_Y = 10;
+    static final int SIZE_X = 8;
+    static final int SIZE_Y = 5;
     static final int N = 4;
 
     // 1. Создаем двумерный массив
@@ -44,7 +44,7 @@ public class Main {
 
     }
 
-    // 7. Метод который устанавливает символ
+    // 7. Метод, который устанавливает символ
     private static void setSym(int y, int x, char sym) {
         field[y][x] = sym;
     }
@@ -133,7 +133,7 @@ public class Main {
         for (int i = 0; i < SIZE_Y; i++) {
             // Левая вертикаль
             int k_up = i, k_dwn = i; // итератор для диагоналей вверх и вниз
-            int sizeDiagonal = (SIZE_X > SIZE_Y)? SIZE_Y: SIZE_X;
+            int sizeDiagonal = (SIZE_X > SIZE_Y)? SIZE_X : SIZE_Y;
             char[] seq_up = new char[sizeDiagonal];
             char[] seq_dwn = new char[sizeDiagonal];
             for (int j = 0; j < SIZE_X; j++) {
@@ -177,7 +177,7 @@ public class Main {
         // Проверка диагоналей от верхней и нижней горизонталей
         for (int i = 1; i < SIZE_X; i++) {
             int k_up = SIZE_Y - 1, k_dwn = 0; // итератор для диагоналей вверх и вниз
-            int sizeDiagonal = (SIZE_X > SIZE_Y)? SIZE_Y : SIZE_X;
+            int sizeDiagonal = (SIZE_X > SIZE_Y)? SIZE_X : SIZE_Y;
             char[] seq_up = new char[sizeDiagonal];
             char[] seq_dwn = new char[sizeDiagonal];
             int counter = 0; // счетчик запомненных элементов для последующего заполнения БЛОК символами
@@ -320,111 +320,6 @@ public class Main {
 //                printField();
 //            }
         setSym(coord[0], coord[1], AI_DOT);
-    }
-
-    // 14. Проверка победы
-    private static boolean checkWin(char sym) {
-        // Проперка горизонталей
-        for (int i = 0; i < SIZE_Y; i++) {
-            int counter = 0;
-            for (int j = 0; j < SIZE_X; j++) {
-                if (field[i][j] == sym) {
-                    counter++;
-                    if (counter == N)
-                        return true; // победа
-                }
-                else
-                    counter = 0;
-            }
-        }
-
-        // Проверка вертикалей
-        for (int i = 0; i < SIZE_X; i++) {
-            int counter = 0;
-            for (int j = 0; j < SIZE_Y; j++) {
-                if (field[j][i] == sym) {
-                    counter++;
-                    if (counter == N)
-                        return true;
-                }
-                else
-                    counter = 0;
-            }
-        }
-
-        // Проверка диагоналей от левой вертикали
-        for (int i = 0; i < SIZE_Y; i++) {
-            // Левая вертикаль
-            int k_up = i, k_dwn = i; // итератор для диагоналей вверх и вниз
-            int counter_up = 0, counter_dwn = 0; // счетчики комбинаций для диагоналей вверх и вниз
-            for (int j = 0; j < SIZE_X; j++) {
-                //Проверка для диагонали вверх
-                if (k_up >= 0) {
-                    if (field[k_up][j] == sym) {
-                        counter_up++;
-                        if (counter_up == N) {
-                            //System.out.println("check -> Проверка диагоналей/Левая вертикаль/Проверка для диагонали вверх");
-                            return true;
-                        }
-                    }
-                    else
-                        counter_up = 0;
-
-                    k_up--;
-                }
-
-                // Проверка для диагонали вниз
-                if (k_dwn < SIZE_Y) {
-                    if (field[k_dwn][j] == sym) {
-                        counter_dwn++;
-                        if (counter_dwn == N) {
-                            //System.out.println("check -> Проверка диагоналей/Левая вертикаль/Проверка для диагонали вниз");
-                            return true;
-                        }
-                    }
-                    else
-                        counter_dwn = 0;
-
-                    k_dwn++;
-                }
-            }
-        }
-
-        // Проверка диалоналей от верхней и нижней горизонталей
-        for (int i = 1; i < SIZE_X; i++) {
-            int k_up = SIZE_Y - 1, k_dwn = 0; // итератор для диагоналей вверх и вниз
-            int counter_up = 0, counter_dwn = 0; // счетчики комбинаций для диагоналей вверх и вниз
-            for (int j = i; j < SIZE_X; j++) {
-                if (k_up >= 0) {
-                    if (field[j][k_up] == sym) {
-                        counter_up++;
-                        if (counter_up == N) {
-                            //System.out.println("check -> Проверка диалоналей от верхней и нижней горизонталей");
-                            return true;
-                        }
-                    } else
-                        counter_up = 0;
-
-                    k_up--;
-                }
-
-                // Проверка для диагонали вниз
-                if (k_dwn < SIZE_Y) {
-                    if (field[j][k_dwn] == sym) {
-                        counter_dwn++;
-                        if (counter_dwn == N) {
-                            //System.out.println("check -> Проверка для диагонали вниз");
-                            return true;
-                        }
-                    } else
-                        counter_dwn = 0;
-
-                    k_dwn++;
-                }
-            }
-        }
-
-        return false; // Нет победных комбинаций
     }
 
     // 16. Проверка полное ли поле? возможно ли ходить?
