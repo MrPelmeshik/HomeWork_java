@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
 
     // 3. Определяем размеры массива
-    static final int SIZE_X = 8;
+    static final int SIZE_X = 5;
     static final int SIZE_Y = 5;
     static final int N = 4;
 
