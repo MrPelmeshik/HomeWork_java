@@ -278,47 +278,6 @@ public class Main {
                     "\n\tcoord[int 2] -> " + coord[0] + ", " + coord[1]);
         }
 
-//            System.out.println("ПК -> Проверка на победный ход");
-//            responseAI = findingRightCoordMovement(AI_DOT);
-//            if (responseAI[0] >= 0 && responseAI[1] >= 0 && responseAI[2] >= N - 1) { // Если мы можем победить в одни ход, то делаем победный ход
-//                coord[0] = responseAI[0];
-//                coord[1] = responseAI[1];
-//                f = true;
-//                System.out.println("ПК -> Победный ход -> " + coord[0] + ", " + coord[1]);
-//            }
-//            if (!f) {
-//                System.out.println("ПК -> Проверка на пользовательский победный ход");
-//                responseAI = findingRightCoordMovement(PLAYER_DOT); // Проанализировать поле на наличие победного хода пользователя (аналогично проверки на победу)
-//                if (responseAI[0] >= 0 && responseAI[1] >= 0 && responseAI[2] >= N - 1) { //  Если противник может победить в один ход, то недать пользователю сделать победный ход
-//                    coord[0] = responseAI[0];
-//                    coord[1] = responseAI[1];
-//                    f = true;
-//                    System.out.println("ПК -> Не дать пользователю сделать победный ход -> " + coord[0] + ", " + coord[1]);
-//                }
-//            }
-//            if (!f) {
-//                System.out.println("ПК -> Подбор адекаватного хода");
-//                responseAI = findingRightCoordMovement(AI_DOT); // Иначе (мы должны сделать осмысленный ход)
-//                if (responseAI[0] >= 0 && responseAI[1] >= 0) { // Если это возможно, то движемся по заданному пути
-//                    coord[0] = responseAI[0];
-//                    coord[1] = responseAI[1];
-//                    f = true;
-//                    System.out.println("ПК -> Корректный ход -> " + coord[0] + ", " + coord[1]);
-//                }
-//            }
-//            if (!f) {
-//                // Если мы прищли сюда, значит адекватных путей для победы нет.
-//                // Тогда ставим на рандоме (мешать пользователю на этом этапе нет будем)
-//                coord[0] = rand.nextInt(SIZE_X);
-//                coord[1] = rand.nextInt(SIZE_Y);
-//                System.out.println("ПК -> Рандом, получается -> " + coord[0] + ", " + coord[1]);
-//            }
-//
-//            // !!!Удалить при первой же возможности
-//            if(!isCellValid(coord[0], coord[1])) {
-//                System.out.println("Err -> is coord (" + coord[0] + ", " + coord[1] + ") no valid");
-//                printField();
-//            }
         setSym(coord[0], coord[1], AI_DOT);
     }
 
